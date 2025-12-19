@@ -1,0 +1,28 @@
+Introduction
+
+OSPF (Open Shortest Path First)
+  Uses Dijkrsta's algorithm to compute shortest path to each destination
+
+RIP(Routing Information Protocol)
+  Distance Vector Routing Protocol limited to only 15 hops
+
+Pester
+
+IIS Servers 
+
+Part 1 Fundamentals 
+
+cd 
+  change directory 
+
+dir
+  list content directories 
+
+Get-Alias 
+  This will let you see all the built in aliases and which powershell commands they map to. 
+
+cls 
+  This will clear your screen. 
+
+Get-Command -Name Get-Alias 
+  Get-Command will allow you to see a list of every command powershell is aware of. (Page 6)
