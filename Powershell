@@ -26,3 +26,8 @@ cls
 
 Get-Command -Name Get-Alias 
   Get-Command will allow you to see a list of every command powershell is aware of. (Page 6)
+
+Get-Command -Verb Get
+  Using this parameter on Get-Command, you can limit hige list of commands to only those that use the Get verb
+
+Get-Command -Verb Get -Noun Content
