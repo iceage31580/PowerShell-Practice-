@@ -31,3 +31,19 @@ Get-Command -Verb Get
   Using this parameter on Get-Command, you can limit hige list of commands to only those that use the Get verb
 
 Get-Command -Verb Get -Noun Content
+  If the results are too narrow, the verb can be removed. 
+
+Get-Command -Noun Content 
+  This is to show that verb and noun commands can be separated
+
+Get-Command -Name Get-Content 
+  If you'd rather define the entire command as one unit, you can use the name parameter instead and specify the entire command name. 
+
+Get-Help Add-Content
+  You can pass the command name to the Get-Help command to retrieve the standard SYNOPSIS, SYNTAX, DESCRIPTION, RELATED LINKS, and REMARKS help sections. 
+
+Get-Help Add-Content Examples
+  This parameter shows examples of real-world uses of the command in a variety of scenarios. 
+
+Get-Help about_Core_Commands
+
