@@ -47,3 +47,13 @@ Get-Help Add-Content Examples
 
 Get-Help about_Core_Commands (Page 9)
 
+Get-Help -Name About*
+  In Powershell, the wildcard character, an asterisk (*) can be used as a placeholder for zero or more characters. 
+  Although the Get-Help command has a Name parameter, you can pass the parameter arguement directly by entering -Name. 
+  This is known as a positional paramter, which determines the value you're passing in based on it's position in the command. 
+
+Update-Help
+  For documentation. 
+
+
+
