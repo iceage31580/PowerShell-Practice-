@@ -2,3 +2,18 @@ Everything in powershell is an object.
 
 Variables 
   A variable is a place to store values. (Page 13) 
+
+Displaying and Changing a Variable 
+
+  All variables in Powershell start with a dollar sign($), which indicates to Powershell that you are calling a variable and not a cmdlet, function, script, or      executable file. 
+
+  $MaximumHistoryCount
+
+  The $MaximumHistoryCount variable is a built-in variable that determines the maximum number of commands PowerShell saves in its command history; the default
+  is 4096 commands. 
+
+  You can change a variable's value by entering the variable name-starting with a dollar sign- and then using the equal sign(=). 
+
+  $MaximumHistoryCount = 200
+
+  Variables in Powershell comin in two broad classes: user-defined varaibles, whcih are created by the user, and automatic variables, which already exist in        Powershell. 
