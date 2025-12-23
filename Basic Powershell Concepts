@@ -16,4 +16,4 @@ Displaying and Changing a Variable
 
   $MaximumHistoryCount = 200
 
-  Variables in Powershell comin in two broad classes: user-defined varaibles, whcih are created by the user, and automatic variables, which already exist in        Powershell. 
+  Variables in Powershell comin in two broad classes: user-defined varaibles, whcih are created by the user, and automatic variables, which already exist in Powershell. (Page 14)
