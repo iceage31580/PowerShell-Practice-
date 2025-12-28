@@ -17,3 +17,15 @@ Displaying and Changing a Variable
   $MaximumHistoryCount = 200
 
   Variables in Powershell comin in two broad classes: user-defined varaibles, whcih are created by the user, and automatic variables, which already exist in Powershell. (Page 14)
+
+User Defined Variables 
+
+  A variable needs to exist before you can use it. To create a variable, you need to declare it-say it exists- and then assign it a value to it (or intialize it). 
+
+  $color = 'blue'
+
+  Once you've created teh variable and assigned it a value, you can reference it by typing the variable name in the console. 
+
+  The value of a variable won't change unless something, or someone, explicitly changes it. 
+
+  When you use teh equal sign to define the variable, you're doing the same thing you'd do with the Set-Variable command. (Page 15)
