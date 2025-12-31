@@ -28,4 +28,17 @@ User Defined Variables
 
   The value of a variable won't change unless something, or someone, explicitly changes it. 
 
-  When you use teh equal sign to define the variable, you're doing the same thing you'd do with the Set-Variable command. (Page 15)
+  When you use the equal sign to define the variable, you're doing the same thing you'd do with the Set-Variable command. (Page 15)
+
+  Set-Variable -Name color -Value blue
+
+  Get-Variable -Name color
+
+  Both output blue for the variable color. 
+
+  -You can also use Get-Variable to return all available variables. 
+
+Automatic Variables (Page 16)
+
+
+
