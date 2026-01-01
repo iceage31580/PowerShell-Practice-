@@ -39,6 +39,19 @@ User Defined Variables
   -You can also use Get-Variable to return all available variables. 
 
 Automatic Variables (Page 16)
+  The $null varialbe is a strange one: it represents nothing. 
+
+  $foo = $null
+  $foo
+  $bar
+
+  Get-Variable -Name foo
+
+  Another commonly used automatic variable is %LASTEXITCODE. Powershell allows you to invoke exxtneral exectuable applications like the old school ping.exe, 
+  which pings a website to get a response. 
+  When external applications finish running, they finish with an exit code, or return code, that indicates a message. 
+
+  Typically, a 0 indicates success, and anything else means either a failure or anamoly. (Page 18) 
 
 
 
