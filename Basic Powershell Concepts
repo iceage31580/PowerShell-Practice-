@@ -47,11 +47,15 @@ Automatic Variables (Page 16)
 
   Get-Variable -Name foo
 
-  Another commonly used automatic variable is %LASTEXITCODE. Powershell allows you to invoke exxtneral exectuable applications like the old school ping.exe, 
+  Another commonly used automatic variable is %LASTEXITCODE. Powershell allows you to invoke external exectuable applications like the old school ping.exe, 
   which pings a website to get a response. 
   When external applications finish running, they finish with an exit code, or return code, that indicates a message. 
 
   Typically, a 0 indicates success, and anything else means either a failure or anamoly. (Page 18) 
+
+  The Preference Variable 
+
+    Powershell has a type of automatic variable referred to as preferrence variables. These variables control the default behavior of various output streams: Error, Warning, Verbosem Debug, and information. (Page 18). 
 
 
 
