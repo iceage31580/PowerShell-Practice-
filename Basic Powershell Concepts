@@ -57,5 +57,12 @@ Automatic Variables (Page 16)
 
     Powershell has a type of automatic variable referred to as preferrence variables. These variables control the default behavior of various output streams: Error, Warning, Verbosem Debug, and information. (Page 18). 
 
+    You can find a list of all the preference variables by running Get-Variable and filtering all variables ending in Preference. 
+
+    Get-Variable -Name *Preference 
+
+    These variables can be used to configure the various types of output Powershell can return. 
+
+    
 
 
