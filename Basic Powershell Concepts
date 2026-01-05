@@ -61,7 +61,7 @@ Automatic Variables (Page 16)
 
     Get-Variable -Name *Preference 
 
-    These variables can be used to configure the various types of output Powershell can return. 
+    These variables can be used to configure the various types of output Powershell can return. (Page 19) 
 
     
 
