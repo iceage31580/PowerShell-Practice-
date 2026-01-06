@@ -63,6 +63,12 @@ Automatic Variables (Page 16)
 
     These variables can be used to configure the various types of output Powershell can return. (Page 19) 
 
-    
+    Get-Varialbe -Name 'doesnotexist'
+
+    This command will generate an error message. This is the default behavior for the Error stream. 
+
+    If for whatever reason you didn't want to be bothered by this error text, and would rather nothing happenm 
+    you could redefine the $ErrorActionPreference variable to SilentlyContinue or Ignore, etiher of which will tell Powershell 
+    not to output any error text: (Page 19). 
 
 
