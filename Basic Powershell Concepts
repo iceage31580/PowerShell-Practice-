@@ -71,4 +71,12 @@ Automatic Variables (Page 16)
     you could redefine the $ErrorActionPreference variable to SilentlyContinue or Ignore, etiher of which will tell Powershell 
     not to output any error text: (Page 19). 
 
+      $ErrorActionPreference = 'SilentlyContinue'
+
+    Ignoring error output is generally considered bad practice. 
+
+Data Types
+
+  Powershell variables come in a variety of forms, or types.(page 19). 
+
 
