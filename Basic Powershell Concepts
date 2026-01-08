@@ -79,4 +79,14 @@ Data Types
 
   Powershell variables come in a variety of forms, or types.(page 19). 
 
+  Powershell has several data types-including bools, strings, and integers- and you can change a variable's data type without errors. 
 
+  $foo = 1
+  $foo = 'one'
+  $foo = $true
+
+Boolean Values 
+
+  Just about every programming language uses booleans, which have a true or false value (1 or 0). 
+  Booleans are used to represent binary conditions like a light switch being on or off. (Page 20)
+  being 
