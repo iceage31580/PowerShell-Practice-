@@ -89,4 +89,18 @@ Boolean Values
 
   Just about every programming language uses booleans, which have a true or false value (1 or 0). 
   Booleans are used to represent binary conditions like a light switch being on or off. (Page 20)
-  being 
+  In Powershell, booleans are called bools, and the two boolean values are represented by the automatic variables $true and $false. 
+  These automatic variables are hardcoded into Powershell adn can't be changed. 
+
+Integer and Floating Points
+
+You can represent numbers in PowerShell in two main ways: via integer or floating-point data types. 
+
+Integer types
+
+  Integer data types hold only whole numbers and will round any decimal input to the nearest integer. 
+  Integer data types come in signed and unsigned types. 
+  Signed data types can store both positive and negative numbers; unsigned data types tore values with no sign.
+
+  By default, PowerShell stores integers by using the 32-bit signed Int32 type. The bit count determines how big(or small) a number the variable can 
+  hold; in this case, anything in the range -2,147,483,648 to 2,147,483,647. (Page 20).
