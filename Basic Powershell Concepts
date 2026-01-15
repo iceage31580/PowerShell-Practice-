@@ -104,3 +104,23 @@ Integer types
 
   By default, PowerShell stores integers by using the 32-bit signed Int32 type. The bit count determines how big(or small) a number the variable can 
   hold; in this case, anything in the range -2,147,483,648 to 2,147,483,647. (Page 20).
+
+  For number outsie that range, you can use the 64-bit signed Int64 type, which has a range of -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. 
+
+  Listing 2-12
+
+1.$num = 1
+  $num = 1
+  1
+2.$num.GetType().name
+  Int32
+3.$num = 1.5
+  $num.GetType().name
+  Double
+4.[Int32]$num
+  2
+
+  Page 20
+
+  
+  
