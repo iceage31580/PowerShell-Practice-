@@ -122,5 +122,22 @@ Integer types
 
   Page 20
 
+  1. Next, you check the tpye of $num
+
+  2. Powershell interprets 1 as Int32. 
+
+  3. You can change the $num to hold a decimal value. 
+
+  4. You can force Powershell to treat a variable as a certain type by casting that variable. 
+
+Floating-Point Types
+
+The Double type belongs to the broader class of variables known as floating point variables. 
+
+Although they can be used to represent whole numbers, floating-point variables are most often used to represent decimals. 
+
+Page 21
+
+
   
   
