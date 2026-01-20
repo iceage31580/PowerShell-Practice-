@@ -138,6 +138,26 @@ Although they can be used to represent whole numbers, floating-point variables a
 
 Page 21
 
+The other main type of floating-point variable is Float. 
+
+Although, Float and Double are capable of representing decimal numbers, these types can be imprecise. 
+
+Powershell uses the Double type by default. 
+
+$num = 0.12345678910
+$num.GetType().name
+Double
+$num + $num
+0.2469135782
+[Float]$num + [Float]$num
+0.246913582086563
+
+As you can see PowerShell uses the Double type by default. 
+But Notice what happens when you $num to itself but cast both as a Float, you get a strange answer. 
+Again, the reasons are beyond the scope of this book, but be aware that errors like this can happen when using Float and Double. 
+
+Page 21
+Strings 
 
   
   
