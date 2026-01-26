@@ -159,5 +159,20 @@ Again, the reasons are beyond the scope of this book, but be aware that errors l
 Page 21
 Strings 
 
+If you try to assign the blue value to $color without the quotes, Powershell will return an error. 
+
+$color = blue
+
+Without quotes, PowerShell, interprets blue as a command and tries to execute it. Because the command blue doesn't exist, 
+PowerShell returns an error message that says so. To correctly define a string, you need to use quotes around your value. 
+
+Combining Strings and Variables
+
+Strings aren't restricted to word; they can be phrases and sentences as well. 
+For instance, you can assign $sentence this string:
+
+$sentence = "Today, you learned that PowerShell loves the color blue" 
+
+
   
   
