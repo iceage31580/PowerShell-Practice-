@@ -173,6 +173,24 @@ For instance, you can assign $sentence this string:
 
 $sentence = "Today, you learned that PowerShell loves the color blue" 
 
+But maybe you want to use this same sentence, but with the words Powershell and blue as the values of variables. 
+For instance, what if oyu have a variable called $name, another called $language and other called $color?
+
+$language = 'PowerShell'
+$color = 'blue'
+
+$sentence = "Today, you learned that $language loves the color $color"
+$sentence
+
+Notice, the use of double quotes. Enclosing your sentence in single quotes doesn't achieve the intended result. 
+There's an important difference between single and double quotes in Powershell. 
+
+Using Double Vs. Single Quotes
+
+When assigning a variable a simple string, you can use single or double quotes.
+
+Page 22
+
 
   
   
