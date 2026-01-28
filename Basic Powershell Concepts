@@ -191,6 +191,30 @@ When assigning a variable a simple string, you can use single or double quotes.
 
 Page 22
 
+$color = "yellow"
+$color = 'red'
+$color = ' '
+
+It doesn't matter which quotes you use to define a simple string. 
+So why does it matter when you have variables in your string?
+The answer has to do with variable interpolation, or variable expansion.
+
+Normally, when you enter $color by itself into the console and hit ENTER, PowerShell interpolates, or expands
+that variable. 
+
+These are fancy terms that mean PowerShell is reading the value inside a variable, or opening the box so you can see inside. 
+
+When you use double quotes to call a variable, the same thing happen: the variable is expanded. 
+
+"$color" <- This will read inside
+
+'$color' <- This does not read inside. 
+
+When you use single quotes, the console outputs the variable itself. 
+
+Page 23
+
+
 
   
   
