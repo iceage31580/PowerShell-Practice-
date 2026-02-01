@@ -214,7 +214,28 @@ When you use single quotes, the console outputs the variable itself.
 
 Page 23
 
+Single quotes tell PowerShell that you mean exactly what you're typing, whether that's a word like blue or what looks like a variable 
+called $color. 
 
+So when you use a variable inside single quotes, PowerShell doesn't know how to expand that variable's value. 
+This is why you need to use double quotes when inserting variables into your strings. 
 
+Objects
+
+In PowerShell, everything is an object. 
+
+In technical terms, an object is an individual instance of a specific template, called a class. 
+
+A class specifies the kinds of things an object will contain. 
+
+An object's class determines its methods, or actions that can be taken on that object. 
+
+In other words, the methods are all the things an object can do. 
+
+  For example, a list object might have a sort() method, when called, will sort the list. 
+  Likewise, an object's class determines its properties, the object's variables. 
+  You can think of the properties as all the data about the object. 
+
+Page 23
   
   
