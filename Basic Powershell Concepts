@@ -238,4 +238,24 @@ In other words, the methods are all the things an object can do.
 
 Page 23
   
-  
+  Let's consider an example: 
+
+  Car: Starts out in the design phase:
+
+    The plan, or template, defines how the car should look, what kind of engine it should have, 
+    what kind of chassis, and so forth. 
+
+    The plan also lays out what the car will be able to do once it's complete: move forward, backward, open and close 
+    the sunroof. These are the car's methods. 
+
+    Each car is built from this class, and all of that particular car's properties and methods are added to it. 
+    One car might be blue, while the same model car might be red, and another car may have a different transmission. 
+
+    These attributes are the properites of the a specific car object. Likewise, each of the cars will drive forward, drive in reverse
+    and have the same methods to oepn and close the sun roof. These actions are the car's methods. 
+
+Page 24
+
+Inspecting Properties
+
+    1. 
