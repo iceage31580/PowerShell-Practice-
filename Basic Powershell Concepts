@@ -266,4 +266,5 @@ Inspecting Properties
     $color is the example object being used. For context, in the book it's called and has a parameter added. 
     $color = 'red' 
     When the command goes through the only property is color.length with a value of 3. 
-    
+
+Page 25
