@@ -258,4 +258,12 @@ Page 24
 
 Inspecting Properties
 
-    1. 
+    To look at an object's properties, you'll use the Select-Object command and the property command. 
+
+    You'll pass the Property an asterisk argument, to tell Powershell to return everything it finds.
+
+    Select-Object -InputObject $color -Property *
+    $color is the example object being used. For context, in the book it's called and has a parameter added. 
+    $color = 'red' 
+    When the command goes through the only property is color.length with a value of 3. 
+    
