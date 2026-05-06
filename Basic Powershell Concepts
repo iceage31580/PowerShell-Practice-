@@ -268,3 +268,17 @@ Inspecting Properties
     When the command goes through the only property is color.length with a value of 3. 
 
 Page 25
+
+Using the Get-Member cmdlet
+
+  Using Select-Object, we can find that the $color string has only a single property. 
+
+  But recall that objects sometimes have methods as well. 
+
+  To take a look at all the methods and properties that exist, you can use the Get-Member cmdlet. 
+    It's an easy way to quickly list all of a particular object's properties and methids, collectively referred to as an object's members. 
+
+  Get-Member -InputObject $color
+
+  The number of methods and properties an object will have depends on it's parent class. 
+
