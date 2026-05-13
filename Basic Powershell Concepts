@@ -302,6 +302,6 @@ You would get Rd. But notice that the Remove() mothod doesn't permanently chage 
 
 PS>$newColor = $color.Remove(1,1)
 
-
+Page 26
   
 
