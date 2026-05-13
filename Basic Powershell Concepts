@@ -282,3 +282,26 @@ Using the Get-Member cmdlet
 
   The number of methods and properties an object will have depends on it's parent class. 
 
+Page 25 
+
+Calling Methods
+
+  You can reference methods with dot notation. However, unlike a property, a method will always end in a set of    opening and closing parantheses and can take one or more parameters. 
+
+  PS>Get-Member -InputObject $color -Name Remove
+
+  Remove has two definitions. This means you can use the method in two ways: either with startIndex and the count parameter, or with just StartIndex.
+
+  So to remove the second character in $color, you specify where you would like to start removing, which we call the index, and index of 1 and so on. Along with an index, you can provide the number of characters you would like to remove by using a commna to separate the parameter arguments. 
+
+  PS>$color.Remove(1,1)
+
+    Using an index of 1, you've told Powershell that you want to remove characters starting with the string's second character; the second argument tells Powershell to remove just one character. 
+
+You would get Rd. But notice that the Remove() mothod doesn't permanently chage the value of a string variable. If you'd like to keep this change, you'd need to assign the output of the Remove() method to a variable. 
+
+PS>$newColor = $color.Remove(1,1)
+
+
+  
+
