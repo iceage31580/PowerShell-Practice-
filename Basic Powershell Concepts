@@ -303,5 +303,28 @@ You would get Rd. But notice that the Remove() mothod doesn't permanently chage 
 PS>$newColor = $color.Remove(1,1)
 
 Page 26
-  
+
+Data Structures 
+
+  A data structure is a way to organize multiple pieces of data. Data Structures in PowerShell are represented by objects stored in variables and come in three main types: arrays, ArrayLists, and hashtables. 
+
+  Arrays
+
+    If a simple variable (such as a float type) is a single box, then an array is a whole bunch of boxes taped together- a list of items represented by a single variable. 
+
+  Defining Arrays
+
+    First, let's define a variable called $colorPicker and assign it an array that holds four colors as strings. 
+    To do this, you use the sign(@) followed by the four strings(separated by commas) within parentheses. 
+
+    $colorPicker = @('blue', 'white', 'yellow', 'black')
+
+    The @ sign followed by an opening parenthesis and zero or more elements separated by a comma signals to PowerShell that you'd like to create an array.
+
+  Reading Array Elements
+
+    To access an element in an array, you use the name of the array followed by a pair of square brackets ([]) that contain the index of the element you want to access. 
+    As with string characters, you start numbering arrays at 0, so the first element is at index 0, the second at index 1, and so on. 
+
+(page 27) 
 
