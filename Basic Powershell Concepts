@@ -341,3 +341,26 @@ Data Structures
 
 Modifying Elements in an Array 
 
+  If you want to change an element in an array, you can reference an item with its index and use  the equal sign to assign a new value. 
+
+  $colorPicker[3] = 'white'
+
+Adding Elements to an Array
+
+  You can add items to an array with the the addition operator(+). 
+
+  $colorPicker = $colorPicker + 'orange'
+
+  The reason for adding colorPicker to itself is because Powershell is being asked to interpolate the $colorPicker variable and then add a new element. 
+
+  $colorPicker += 'brown'
+
+  The += operator tekks PowerShell to add this item to the existing array. 
+
+  You can also add arrays to other arrays. 
+
+  $colorPicker += @('pink', 'cyan')
+
+  Note that Powershell treats any comma separated set of values as an array and you don't explicitly need the parentheses. 
+
+  Unfortunately, there is no equivalent of += to remove an element from an array. (Page 29)
