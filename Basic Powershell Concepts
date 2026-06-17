@@ -379,4 +379,4 @@ ArrayLists
 
   $colorPicker = [System.Collections.ArrayList]@('blue', 'white', 'yellow', 'black')
 
-  As with an array, when you call an ArrayList, each item is displayed on a separate line. 
+  As with an array, when you call an ArrayList, each item is displayed on a separate line. (Page 30)
