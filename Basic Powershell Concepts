@@ -363,4 +363,20 @@ Adding Elements to an Array
 
   Note that Powershell treats any comma separated set of values as an array and you don't explicitly need the parentheses. 
 
-  Unfortunately, there is no equivalent of += to remove an element from an array. (Page 29)
+  Unfortunately, there is no equivalent of += to remove an element from an array. 
+
+ArrayLists
+
+  Everytime you add an element to an array, you're actually creating a new array from your old interpolated array and the new element. 
+  The same thing happens when you remove an element from an array: PowerShell destroys your old array and makes a new one. 
+  This is because arrays in PowerShell have a fixed size.
+
+  For small arrays, you won't notice the difference, but when you begin to work with huge arrays, you'll see a performance hit. 
+  If you know you'll have to remove or add many elements than you can use an ArrayList. 
+  ArrayLists behave nearly identical to the typical PowerShell array, but with one crucial difference: they can dyanmically adjust to add or remoe elements. 
+
+  Defining an ArrayList is exactly like defining an array, except that you need to cast it as an ArrayList. 
+
+  $colorPicker = [System.Collections.ArrayList]@('blue', 'white', 'yellow', 'black')
+
+  As with an array, when you call an ArrayList, each item is displayed on a separate line. 
