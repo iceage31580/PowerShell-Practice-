@@ -380,3 +380,31 @@ ArrayLists
   $colorPicker = [System.Collections.ArrayList]@('blue', 'white', 'yellow', 'black')
 
   As with an array, when you call an ArrayList, each item is displayed on a separate line. (Page 30)
+
+Adding Elements to an ArrayList
+
+  To add or remove an element from an ArrayList without destroying it, you can use its methods. 
+  You can use the Add() and Remove() methods to add or remove items from an ArrayList. 
+
+  $colorPicker.Add('gray')
+
+  This will give you the index of the new element. If you don't want to see the index of the new element than you do assignment to the null variable. 
+
+  $null = $colorPicker.Add('gray')
+
+Removing Elements from an ArrayList
+
+  You can remove elements in a similar way, using the Remove() method. 
+
+  $colorPicker.Remove('gray')
+
+  Notice that to remove an item, you don't have to know the index number. You can reference the element by its actual value. If the array has multiple elements with 
+  the same value, Powershell will remove the element closeest to the start of the ArrayList.
+  The rule of thumb is the larger the collection of items you're working with, the better off you'll be using an ArrayList. 
+  If you're working with small arrays of fewer than 100 elements ro so, you'll notice little differenece between an array and an ArrayList. 
+
+Hashtables
+
+  Arrays and ArrayLists are great when you need your data associated with only a position in a list. But sometimes you'll want something more direct: a way to correlate
+  two pieces of data.
+  In that case, you could use a hashtable(dictionary), a PowerShell data structure that contains a list of key-value pairs. (Page 31)
