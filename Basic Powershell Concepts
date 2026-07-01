@@ -408,3 +408,27 @@ Hashtables
   Arrays and ArrayLists are great when you need your data associated with only a position in a list. But sometimes you'll want something more direct: a way to correlate
   two pieces of data.
   In that case, you could use a hashtable(dictionary), a PowerShell data structure that contains a list of key-value pairs. (Page 31)
+  Instead of using a numeric index, you give Powershell an input, called a key, and it returns the value associated with that key. 
+
+  $users = @{ abertram = "Adam Bertram";
+              raquelcer = 'Raquel Cerillo';
+              zheng = 'Justin Zheng';
+              }
+
+  Powershell will not let you define a hashtable with duplicate keys. Each key has to uniquely point to a single value, which can be an array or even another hashtable. 
+
+Reading Elements from Hashtables
+
+  To access a specific value in a hashtable, you use its key. There are two ways to do this. 
+  $users['abertram']
+  $users.abertram
+
+  The second command uses a property: $users.abertram. Powershell will add each key to the object's properties. If you want to see all keys and values a hashtable has, you can
+  access the Keys and Values properties. 
+
+  $users.Keys
+  $users.Values
+
+  If you want to see all the properties of a hashtable (or any object), you can run this command:
+
+  Select-Object -InputObject $yourobject -Property * (page 32)
