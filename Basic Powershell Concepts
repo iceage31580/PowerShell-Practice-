@@ -432,3 +432,39 @@ Reading Elements from Hashtables
   If you want to see all the properties of a hashtable (or any object), you can run this command:
 
   Select-Object -InputObject $yourobject -Property * (page 32)
+
+Adding and Modifying Hashtable Items
+
+  There are two ways to add an element to a hashtable. 
+
+  $users.Add('natice' , 'Natalie Ice')
+  $users['phrigo'] = 'Phil Rigo'
+
+  To check whether a key already exists in a hashtable, you can use the ContainsKey() method, part of every hashtable created in Powershell. 
+  When the hashtable contains the key, it will return True; otherwise, it will return False. 
+
+  $users.ContainsKey('johnnyq')
+  False
+
+  Once you've confirmed they key is in a hashtable, you can modify its value by using a simple equal sign. 
+
+  $users['phrigo'] = 'Phoebe Rigo'
+
+  You can add items to a hashtable in a couple ways, but there's only one way to remove an item from a hashtable. 
+
+Reemoving Items from a Hashtable
+
+  Like ArrayLists, hashtables have a Remove() method. Simply call it and pass in the key value of the item you want to remove. 
+
+  $users.Remove('natice')
+
+  One of your users should be gone, but you can call the hashtable to double-check. Remember that you can use the Keys property to remind yourself of any key name. 
+
+
+Creaating Custom Objects
+
+  Sometimes you'll need to create a custom object with properties and methods that you need to define. 
+
+  New-Object cmdlet can be used to define a new object with a PSCustomObject type.
+
+  $myFirstCustomObject = New-Object -TypeName PSCustomObject (Page 34)
