@@ -468,3 +468,26 @@ Creaating Custom Objects
   New-Object cmdlet can be used to define a new object with a PSCustomObject type.
 
   $myFirstCustomObject = New-Object -TypeName PSCustomObject (Page 34)
+
+    This example uses the New-Object command, but you could do the same thing by using an equal sign and a cast. 
+
+    $myFirstCustomObject = [PSCustomObject]@{OSBuild = 'x'; OSVersion = 'y'}
+
+    The semicolon is used to separate key and value defintions. 
+
+    Once you have a custom object, you use it as you would any other object. 
+
+    PS>Get-Member -InputObject $myFirstCustomObject
+
+    This passes the custom Object, you to the Get-Member cmdlet to check that it is a PSCustomObject. 
+
+    This object will have pre-existing methods. 
+    You can access the methods using dot notation:
+
+    $myFirstCustomObject.OSBuild
+    $myFirstCustomObject.OSVersion
+
+Summary:
+
+    This is a general overview of object, variables, and data types. 
+    
