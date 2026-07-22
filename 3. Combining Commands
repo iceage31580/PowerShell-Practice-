@@ -1,1 +1,27 @@
 So far, you've been using the PowerShell Console to call one command at a time. (Page 37)
+
+For bigger projects, having to call each command individually is too time-consuming. 
+Luckily, you can combine commands so you can call them as a single unit. You can use the PowerShell pipeline or saving your code in external scripts. 
+
+Starting a Windows Service. 
+
+  To illustrate why you'd want to combine commands, you'll start by doing a simple example the old way. You'll use two commands: Get-Service, which queries Windows 
+  services and returns information about them; and Start-Service, which starts Windows services. 
+
+  $serviceName = "wuauserv'
+  Get-Service -Name $serviceName
+  Start-Service -Name $serviceName
+
+  You can run Get-Service just to make sure PowerShell doesn't throw any errors. Chances are the service is already running. 
+  If it is, Start-service will simply return control to the console. 
+
+  You can imagine how monotonous it might get if you were working with hundreds od services. 
+
+Using the Pipeline
+
+  The first way to simplify your code is by chaining together commands by using the PowerShell pipeline, a tool that allows you to send the output of one command
+  directly to antoher command as input. To use the pipeline, use the pipe operator (|) between two commands like so:
+
+  command1 | command2
+
+  Here is the output of command1 is piped into command2, becoming command2's input. The final command in the pipeline will output to the console. (Page 38)
