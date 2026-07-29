@@ -46,4 +46,56 @@ Piping Arrays Between Commands
 
   If you create a text file in notepad called services.txt that contain the strings Wuauserve and W32Time on separates lines you have created a file with services you
   can run. 
-  A file like this can contain as many services as you like. To disaply the file to your powershell window, use the Get-Content cmdlet's Path Parameter. (Page 39). 
+  A file like this can contain as many services as you like. To disaply the file to your powershell window, use the Get-Content cmdlet's Path Parameter. (Page 39).
+
+  Get-Content -Path C:\Services.txt
+
+  The Get-Content command reads in a file line by line, adding each line to an array and then returning that array. 
+  You can also use the pipeline to pass the array that Get-Contents returns into the Get-Service command. 
+
+  Get-Content -Path C:\Services.txt | Get-Service
+
+  The Get-Content command is reading in the text file and spitting out an array. 
+  But instead of sending the array itself througgh the pipeline, PowerShell unwraps it, sending each item in the array individually through the pipeline. 
+
+  This allows you to execute the same commands for every item in the array. By putting every service you want to start in your text file, and tacking on an extra
+  | Start-Service you have a insgle comand that can start as many services as you need. 
+
+  Get-Content -Path C:\Services.txt | Get-Service | Start-Service
+
+  There's no limit to how many commands you can stitch together using the pipeline. But if you find yourself going over five, you may need to rethink your approach. 
+  Note that although the pipeline is powefule, it won't work everywhere: most PowerShell commands accept only certain types of pipeline input, and some don't 
+  accept any at all.
+
+Looking at Parameter Binding 
+
+  When you pass parameters to a command, PowerShell initiates a process known as parameter binding, in which it matches each object you pass into the command to the 
+  various parameters specified by the command's creator. 
+
+  For a Powershell command to accept pipeline input the person who writes the command -whether that's Microsoft or you has to explicitly build in pipeline support
+  for one or more parameters. 
+  You'll notice an error if you attempt to pipe information into a command that doesn't have pipeline support on any parameter, or if Powershell cannot find a 
+  suitable binding. 
+
+  'string' | Get-Process
+
+  You should see that the command won't accept pipeline input. 
+  To see if using the pipeline is even possible, you can look at a command's full help content by using the Full paramter on the Get-Help command. 
+
+  Get-Help -Name Get-Service -Full
+
+  You should get quite a bit of output. Scroll down to the PARAMETERS section. This section lists information about each parameter and gives you more information
+  than you'd get by not using the Detailed or Full parameter at all. 
+
+  There's a lot of information here, but the focus is on the Accept pipeline input. 
+  This field tells you whether a parameter accepts a pipeline input or not; if the parameter didn't accept pipeline input, you'd see false next to this field.
+  There can be even more information such as if the parameter accepts pipeline input both via ByValue and ByPropertyName. 
+
+  -Name <string[]>
+
+  -ComputerName <string[]>
+
+  ComputerName only accpets ByPropertyName. (Page 41).
+
+  
+  
