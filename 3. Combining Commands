@@ -25,3 +25,25 @@ Using the Pipeline
   command1 | command2
 
   Here is the output of command1 is piped into command2, becoming command2's input. The final command in the pipeline will output to the console. (Page 38)
+  Many shell scripting languages including cmd.exe and bash, use a pipeline. But what makes the pipeline in Powershell unique is that it passes objects and not simple    strings. 
+
+Piping Objects between Commands
+
+  To send the output of Get-Service into Start-Service: 
+
+  Get-Service -Name 'wuauserv' | Start-Service
+
+  In this example, you don't have to specify any parameters because PowerShell takes care of that for you. It looks at the output of Get-Service, decides what values   it should pass to Start-Service, and matches the value to the parameters that Start-Service takes. 
+
+  You can could also run it without any parameters. 
+
+  'wuauserv' | Get-Service | Start-Service
+
+  Powershell sends the string wuauserv into Get-Service and the output of Get-Service into Start-Service - all without you having to specify a thing!
+  You've combined three separate commands into a single line, but you'll still have to reenter that line for every service you want to start. 
+
+Piping Arrays Between Commands
+
+  If you create a text file in notepad called services.txt that contain the strings Wuauserve and W32Time on separates lines you have created a file with services you
+  can run. 
+  A file like this can contain as many services as you like. To disaply the file to your powershell window, use the Get-Content cmdlet's Path Parameter. (Page 39). 
