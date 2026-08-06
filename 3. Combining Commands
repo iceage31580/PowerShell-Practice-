@@ -95,7 +95,25 @@ Looking at Parameter Binding
 
   -ComputerName <string[]>
 
-  ComputerName only accpets ByPropertyName. (Page 41).
+  ComputerName only accepts ByPropertyName. (Page 41).
 
-  
+  The computer name parameter allows you to specify which computer you'd like to run Get-Service on. 
+  This parameter also accepts a string type. 
+
+  So how does Powershell know that you mean the service name and no the computer computer name when you do something like the following:
+
+  'wuauserv' | Get-Service
+
+   Powershell matches pipeline input to parameters in two ways. 
+   The first is ByValue, which means that PowerShell will look at the type of object passed in and interpret it accordingly.
+   Because Get-Service specifies that it accepts the Name paramter via ByValue, it will interpet any string passed to it as Name unless otherwise specified. 
+   Because parameters passed via ByValue depend on the type of input, each paramter passed ByValue can be on type only. 
+
+    ByValue = Match by Type
+    ByPropertyName = Match by PropertyName
+      (Powershell does this in the background) Page 41. 
+
+    The second way...
+
+      
   
