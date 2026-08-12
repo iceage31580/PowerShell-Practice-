@@ -113,7 +113,27 @@ Looking at Parameter Binding
     ByPropertyName = Match by PropertyName
       (Powershell does this in the background) Page 41. 
 
-    The second way...
+    The second way PowerShell will match a parameter from the pipeline is via by PropertyName. 
+    In this case, Powershell will look at the object passed in, and if it has a property with the appropriate name (ComputerName, in this case), then it will look at     the value for that property and accept that value as the parameter. 
+
+    So if you wanted to pass in both a service name and a computer name to Get-Service, you could createa a PSCustomerObject and pass it in. 
+
+$serviceObject = [PSCustomObject]@{name = 'wuauserv' ; ComputerName = 'SERV1'}
+$serviceObject | Get-Service
+
+"If the labels match, pass the values" 
+
+    By looking at a command's parameter specifications, and using a hashtable to cleanly store the ones you need, you'll be able to use the pipeline string together all sorts of commands. 
+
+Writing Scripts 
+
+    Scripts are external files that store a sequence of commands, which you can run by entering a single line in the PowerShell Console. 
+
+PS> C:\FolderPathToScript\script.ps1
+
+    Although there's nothing you can do in a script that you can't do in the console, it's much easier to run a single command using a script than it is to type several thousand commands. 
+    Not to mention that if you want to change anything in your code, or you make a mistake you'll need to retype those commands again. 
+    But before... Page 42. 
 
       
   
