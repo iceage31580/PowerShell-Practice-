@@ -1,1 +1,18 @@
+Quick Recap: 
+
+Chapter 3 focused on combining commands using the pipeline and external scripts. 
+
+Chapter 2 handled learning how to use variables and store values. 
+
+One of the major benefits of working with variables is they allow you to write code that deals with what a value means: instead of of working with the number 3, for example you'll work with the more general $serverCount, you can write code that runs the same whether you have one, two, or a thousand servers.  
+
+Combine this script that you can run on many computers, and you can start solving problems at a much bigger scale. 
+
+But in the real world, sometimes it matters, whether you're working with one server, or two servers, or a thousand. 
+Right now, you don't have a good way to account for that: your scripts run in one direction top-to-bottom and they don't have any way of changing based on the specific values you're working with. 
+
+Understanding Control Flow
+
+    
+
 
