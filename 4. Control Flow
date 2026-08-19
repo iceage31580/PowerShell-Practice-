@@ -44,7 +44,8 @@ Get-Content -Path "\\$($servers[4])\c$\App_configuration.txt"
         Right now, that path goes straight from the first line of code to the last one, but you can use control flow statements to add forks in the road, circle back 
         to places you've already been, or take you over your lines. 
 
-        By introducing different paths for your script to run along, you allow for much greater flexibility, enabling you to write a single script that can handle            many situations. 
+        By introducing different paths for your script to run along, you allow for much greater flexibility, enabling you to write a single script that can handle   
+        many situations. (Page 48).  
     
 
 
