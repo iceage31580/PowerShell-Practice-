@@ -185,6 +185,36 @@ Scripting in PowerShell
 
     The command to start PowerShell ISE is 
 
-powershell_ise.exe (Page 44) 
+powershell_ise.exe (Page 44)
+
+    An interactive console should open up. 
+    To add a script, click File > New. 
+    The screen should split, with a white panel opening above the console. 
+
+    Click File > Save and save the new file. 
+    Notice that you save your script with the extension .ps1; this extension tells your system that the file is a PowerShell script. 
+
+    You'll be entering all the text for your script in the white panel. 
+    The PowerShell ISE allows you to edit and run the scriptin the same window, which can save you a lot of annoying back and forth as you're editing. 
+    The PowerShell ISE has many more features. 
+
+    PowerShell scripts are simple text files. 
+    It doesn't matter which which text editor is used, so long as you use the correct PowerShell syntax. 
+
+Writing Your First Script
+
+    Write-Host 'Hello, I am in a script'
+
+    Notice there's no PS> at the start of the line. 
+    From here on out, that's how you'll know whether we're working in the console or writing a script.
+    To run this script, head over to your console and type the path to your script. 
+
+    Here you use the full path to run WriteHostExample.ps1. 
+    If you're already in the directory containing the script you want to run you can use a dot to indicate the current working directory like so .\WriteHostExample.ps1
+
+
+This chapter contained two methods to combine commands: the pipeline and scripts. 
+You also saw how to change execution policy and demystified some of the magic behind the pipeline by looking at parameter binding. 
+
 
     
