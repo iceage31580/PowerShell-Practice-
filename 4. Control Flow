@@ -13,6 +13,38 @@ Right now, you don't have a good way to account for that: your scripts run in on
 
 Understanding Control Flow
 
+        You're going to write a script that reads the contents of a file stored in various remote computers. 
+        GetAPPConfiguration should be placed in the root of the C:\ drive to work. 
+        In the example, the servers will have the names: SRV1, SRV2, SRV3, SRV4, and SRV5.
+
+        To access the file's contents, you'll use the Get-Content command, and provide the path to the file as the argument to the Path parameter, as shown here:
+
+Get-Content -Path "\\servername\c$\App_configuration.txt"
+
+        As a first attempt, let's store all our server names in an array, and run this command for every server in the array. 
+        Open a new .ps1 file and enter the code: 
+
+$servers = @('SRV1', 'SRV2', 'SRV3', 'SRV4', 'SRV5')
+Get-Content -Path "\\$($servers[0])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[1])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[2])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[3])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[4])\c$\App_configuration.txt"
+
+        In theory, this code will run with no problems. 
+        But this example, assumes that everything in the environment is pristine.
+        What is SRV2 is down?
+        What if someone forgot to move APP_Configuration.txt onto SERV4?
+        Or used a different file path?
+        You could write a different script for each server, but that solution won't scale, especially as you start to add more and more servers. 
+        What you need is code that can execute differently depending on what it encounters. 
+
+        That's the basic idea behind control flow, the ability to to have your code execute different sequences of instructions depending on predetermined logic.
+        You can think of your scripts as executing along a certain path. 
+        Right now, that path goes straight from the first line of code to the last one, but you can use control flow statements to add forks in the road, circle back 
+        to places you've already been, or take you over your lines. 
+
+        By introducing different paths for your script to run along, you allow for much greater flexibility, enabling you to write a single script that can handle            many situations. 
     
 
 
