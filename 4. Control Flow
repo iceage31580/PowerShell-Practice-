@@ -47,5 +47,50 @@ Get-Content -Path "\\$($servers[4])\c$\App_configuration.txt"
         By introducing different paths for your script to run along, you allow for much greater flexibility, enabling you to write a single script that can handle   
         many situations. (Page 48).  
     
+        You'll start by looking the most basic type of control flow: the conditional statement. 
+
+Using Conditional Statements
+
+        You use booleans to build conditional statements, which tell PowerShell to execute a certain code block based on whether an expression (called a condition) evaluates to True or False. 
+        A condition is a yes/no question: Do you have more than five servers? 
+        Is server 3 up?
+        Does the file path exist?
+        To start using conditional statements, let's see how to translate these kinds of questions into expressions. 
+
+Building Expressions by using Operators
+
+        You can write expressions by using comparison operators, which compare values. 
+        To use a comparison operator, you out it between two values, like this:
+
+1 -eq 1
+True
+
+        You use the -eq operator to determine whether two values are equal. 
+        Here's a list of the most common comparison operators you'll use:
+
+-eq Compares two values and returns True if they are equal
+-ne Compares two values and True if they are not equal
+-gt Compares two values and returns True if the first ig greater than the second
+-ge Compares two values and returns true if the first is less than the second
+-lt Compares two values and returns true if the first is less than the second
+-le Compares two values and returns True if the first is less than the second
+-contains Returns true if ths second value is "in" the first. You can use this to determine whether a value is inside an array
+
+        You can use the preceding operators to compare variables and values. 
+        But an expression doesn't have to be a comparison.
+        Sometimes PowerShellcommands can be used as conditions.
+        In the previous example, you wanted to know whether a server was online. You can test to see whether a server can be pinged by using the Test-Connection cmdlet. 
+
+        Normally, the output of Test-Connection returns an object full of information, but by using the quiet parameter, you can force the command to return a simple
+        True or False and limit the test to a single attempt via the Count parameter. 
+
+Test-Connection -ComputerName offlineserver -Quiet -Count 1
+False
+
+Test-Connection -ComputerName onlineserver -Quiet -Count 1
+True 
+
+If you wanted to know whether the server was offline, you could use the -not operator to convert the expression to its opposite. (Page 50)
+
 
 
