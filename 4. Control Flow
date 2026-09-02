@@ -128,7 +128,7 @@ Get-Content -Path "\\$($servers[1])\c$\App_configuration.txt"
         the condition is true.
         Often enough, you'll want to have one behavior if a condition is true another behavior is false. 
 
-The else Statement
+The else Statement (Page 51)
 
 
 
