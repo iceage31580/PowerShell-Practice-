@@ -90,7 +90,45 @@ False
 Test-Connection -ComputerName onlineserver -Quiet -Count 1
 True 
 
-If you wanted to know whether the server was offline, you could use the -not operator to convert the expression to its opposite. (Page 50)
+        If you wanted to know whether the server was offline, you could use the -not operator to convert the expression to its opposite. (Page 50)
+
+PS> -not (Test-Connection -ComputerName offlineserver -Quiet -Count 1)
+
+        Now that you've seen the basics of expressions, let's look at the simplest conditional statement. 
+
+The if Statement
+
+        The if statement is straightforward: if X is true, then do Y. That's it. 
+
+        To write an if statement, you begin with an if keyword followed by parentheses containining a condition. After the expression comes a codeblock demarcated in         curly brackets. PowerShell will execute that code block only if the expression evaluates to true. 
+        The if expression evaluates to true. 
+        If the if expression evaluates to False or returns nothing at all, the code block is skipped. 
+
+if(condition)
+        {
+                # code to run if the condition evaluates to true
+        }
+
+
+        This example uses the syntax of the hash mark(#) signals a comment, which is text PowerShell will ignore. 
+
+        Now let's take a second look at the code and see how to use an if statement to make sure you don't try to access a server that's not up. 
+        In the preceding section, you saw how Test-Connection can be used as an expression that returns True or False, so let's wrap a Test-Connection command in an 
+        if statement and then use Get-Content in the following code block to avoid accessing a server that's down. 
+
+$servers = @('SRV1', 'SRV2', 'SRV3', 'SRV4', 'SRV5')
+if (Test-Connection -ComputerName $servers[0] -Quiet -Count 1)
+        {
+                Get-Content -Path "\\$($servers[0])\c$\App_configuration.txt"
+        }
+Get-Content -Path "\\$($servers[1])\c$\App_configuration.txt"
+--snip
+
+        Because you have Get-Content in an if statement, you won't run into an errors if you try to access a dead server; if the test fails, your script will know            not to attempt to read the file. You'll try to access the server only if you already know it's up. But notice that this code handles only the case in which 
+        the condition is true.
+        Often enough, you'll want to have one behavior if a condition is true another behavior is false. 
+
+The else Statement
 
 
 
