@@ -130,5 +130,53 @@ Get-Content -Path "\\$($servers[1])\c$\App_configuration.txt"
 
 The else Statement (Page 51)
 
+        To add an alternative to your if statement, you use the else keyword after the closing parenthesis of your if block, followed by another pair of curly brackets containing a code block. 
+
+if(Test-Connection -ComputerName $servers[0] -Quiet -Count 1)
+{
+        Get-Content -Path "\\$($servers[0]\c$App_configuration.txt"
+}
+else
+{
+        Write-Error -Message "The server $($server[0]) is not responding!"
+}
+
+        The if/else statement works perfectly when you have two mutually exclusive siutations. Here, the server is either online or it's not; you need only two branches
+        of code. 
+
+The elseif Statement 
+
+        The else statement works like a catchall; if the first if fails, do this no matter what. For a binary condition, such as a server being up or down, this works well. But sometimes you'll need to account or even more variability. For example, let's say you have a server that you know doesn't have the file you want to get, and you've stored the name of that server in the variable $problemServer. This means you need an extra check to see whether the server you're dealing with is the problem server. You could account for this statement by using a nest if, as in the following code: 
+
+if(Test-Connect -ComputerName $servers[0] -Quiet -Count 1)
+{
+        if($servers[0] -eq $problemServer)
+        {
+                Write-Error -Message "The server $servers[0] does not have the right file!"
+        }
+        else
+        {
+                Get-Content -Path "\\$servers[0]\c$App_Configuration.txt"
+        }
+        else
+        {
+                Write-Error -Message "The server $servers[0] is not responding!"
+        }
+}
+
+        But a cleaner way to write this same logic is to use an else-if statement , which lets you add an extra condition to check before falling back on the code in the else block. The syntax of an elseif block is identical to that of an if block. 
+
+if(-not (Test-Connection) -ComputerName $servers[0] -Quiet -Count 1)
+{
+        Write-Error -Message "The server $servers[0] is not responding"
+}
+elseif
+{
+        Write-Error -Message "Ther server $server[0] does not have the right file!"
+}
+else
+{
+        Get-Content -Path "\\$servers[0]\c$\App_configuration.txt"
+}
 
 
