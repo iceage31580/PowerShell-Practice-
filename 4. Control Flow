@@ -179,3 +179,59 @@ else
         Get-Content -Path "\\$servers[0]\c$\App_configuration.txt"
 } (Page 52)
 
+        Notice that you haven't just added an elseif; you've also changed the logic. 
+        Now you check to see whether the server is offline by first using the -not operator. 
+
+if(-not (Test-Connection) -Computername $servers[0] -Quiet -Count 1)
+
+        Then once you've determined whether the server is online, you check to see whether it's a problem server
+
+elseif ($servers[0] -eq $ problemServer)
+{
+        Write-Error -Message "The server $servers[0] does not have the right file!"
+}
+        If it's not, you use the else statement to run default behavior-getting the file
+
+else
+{
+        Get-Content -Path "\\$servers[0]\c$App_configuration.txt"
+}
+
+
+        As you can seem there are multiple ways to structure code like this. What matters is that the code works and is readable to someone seeing it with fresh eyes, 
+        whether that's a coworker reading it for the first time, or you looking back at a script you wrote a while ago. 
+
+        You can chain together as many elseif statements as you like, which allow you to account for many scenarios. 
+        However, elseif statements are mutually exclusive: when one elseif evaluates to True, PowerShell will run only the code in it's block and will not test the rest of the cases. 
+        In the script above, this didn't cause any issues as you needed to tes tonly whether you were working with the problem server after you had checked that it was up, but it's something to keep in mind moving forward.
+
+        The if, else, and elseif statements are great for handling simple yes/no questions. 
+
+
+The switch Statement
+
+        Let's tweak the example a bit. Say you have 5 servers, and each server has the file in a different path. Based on what's known, you'd need to write a separate elseif statement for each individual server.
+        This would work, but there's a cleaner method. 
+
+        Notice that now you're working with a different kind of condition. 
+        Whereas before you wanted the answers to yes/no questions, here you want to know the specific value of one thing: Is ther server SRV1? Is it SERV2? And so forth. 
+        If you were working with only one or two specific values, an if would do, but in this case, using a switch statement would be cleaner. 
+
+        A switch statement allows you to execute various pieces of code based on a value. 
+        It consists of the switch keyword followed by an expression in parentheses. 
+        Inside the switch block are a series of statements that have a value, followed by a set of curly brackets containing a code block, and eventually a default block. 
+
+switch(expression)
+expressionvalue {
+                        #do something with code ehere 
+                }
+expressionvalue
+{
+}
+
+default
+{
+        # Stuff to do if no matches were found 
+} (Page 53). 
+
+
