@@ -234,4 +234,44 @@ default
         # Stuff to do if no matches were found 
 } (Page 53). 
 
+        A switch statement can contain an (almost) unlimited number of values. If the expression evaluates to a value, the code inside that value's block is executed.
+        Critically, unlike with elseif, after one code block runs PowerShell will continue to evaluate the other conditions unless otherwise specified. 
+        If none of the values match the evaluated value , PowerShell executes the code embedded under the default keyword. 
+        To force PowerShell to stop evaluating conditions in the switch statement, use the break keyword at the end of the code block. 
+
+switch(expression){
+        expressionvalue{
+                # Do something with code here
+                break
+        }
+
+        The break keyword can be used to make your switch conditions mutually exclusive. 
+        Let's go back to our example of five servers with teh same file at different paths. 
+        You know that the server you're working with can have only one value(it can't be both SRV1 and SRV2), so you have to use break statements. 
+
+
+$currentServer = $servers[0]
+switch ($currentServer {
+        $servers[0]
+        # Check if server is online and get content at SRV1 Path
+        break
+        }
+        $servers[1] {
+        ## Check if server is online and get content at SRV2 path. 
+        }
+        $servers[2] {
+        ## Check if server is online and get content at SRV3 path.
+        break
+        }
+
+        You could rewrite this code by using if and onlyif statements. 
+        But however you choose to write, you'll have to repeat the same structure for each server in the list, meaning that the list is going to be very long. 
+
+
+Using Loops 
+
+        A good rule of thumb for computer work: Don't repeat yourself (DRY).
+        If you find yourself doing the same thing more than once, chances there is a way to automate it. The same is true of writing code: if you're using the 
+        same lines of code over and over, there's probably a better solution. (Page54)
+
 
