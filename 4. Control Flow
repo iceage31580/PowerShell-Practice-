@@ -274,4 +274,23 @@ Using Loops
         If you find yourself doing the same thing more than once, chances there is a way to automate it. The same is true of writing code: if you're using the 
         same lines of code over and over, there's probably a better solution. (Page54)
 
+        One way to avoid repetive code is to use loops. 
+        A loop lets you executecode repeatedly until a condition changes.
+        The stop condition can be used to run a loop a set number of times, or until a boolean value has changed, or even to have a loop run infinitely. 
+        We call each of the loop an iteration. 
+
+        Powershell offers give types of loops: foreach, for, do/while. do/until. and while. 
+        This section section explains each type of loop, noting what makes it unique, and highlighting the best situations to use it. 
+
+The foreach loop
+
+        We'll start with the type of loop you'll probably use the most in PowerShell, the foreach loop. 
+        A foreach loop goes through a list of objects and performs the same action for every object, ending when it's fininshed with the last one. 
+        This list of objects is typically represented by an array. 
+        When you run a loop over a list of objects, we say you're iterating over the list. 
+        A foreach loop is useful when you have to perform the same taskon a lot of different, but related objects. 
+
+$servers = @('SRV1', '
+
+(Page 54)
 
