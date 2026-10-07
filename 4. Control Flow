@@ -327,7 +327,7 @@ $servers
 
         You should get something like this: 
 
-SRV1
+SRV1        
 SRV2
 SRV3
 SRV4
@@ -337,4 +337,13 @@ SRV5
         This is because you're modifying only a copy fo the original variable in the array. 
         This is one of the downsides of using a foreach loop (of any kind). 
         To directly modify the original contents of the list you're looping through, you have to use one of the other loop types. 
+
+        Explaining Listing 4-9
+
+foreach = repeat something for every item
+$server =  the temporary variable holding the current item
+in = basically means inside
+$servers = the full list you're going through
+
+
 
