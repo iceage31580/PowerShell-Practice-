@@ -290,7 +290,51 @@ The foreach loop
         When you run a loop over a list of objects, we say you're iterating over the list. 
         A foreach loop is useful when you have to perform the same taskon a lot of different, but related objects. 
 
-$servers = @('SRV1', '
+$servers = @('SRV1', 'SRV2', 'SRV4', 'SRV5')
+Get-Content -Path "\\$($servers[0])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[1])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[2])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[3])\c$\App_configuration.txt"
+Get-Content -Path "\\$($servers[4])\c$\App_configuration.txt"
 
-(Page 54)
+        The fancy logic that has been introduced will be ignored for now. 
+        Unlike in other loops, the foreach loop can be used in three ways: as a foreach statement, as a ForEach-Object cmdlet, or as a foreach() method. 
+        Although each is similar to use, you should understand the difference. 
+
+The foreach statement
+
+        The first type of foreach you'll look at is the foreach statement.
+
+foreach ($server in servers)
+        {
+                Get-Content -Path "\\$server\c$\App_configuration.txt"
+        }
+
+
+
+        As you can see, the foreach statement is followed by parantheses that contain three elements, in order: a variable, the keyword in, and the object or array to iterate over.
+        The variable you provide can have any name, but I reccomend keeping the name as descriptive as possible. 
+
+        As it moves thorugh the list, PowerShell will copy the object it's lookinat into the variable. 
+        Note that because the variable is just a copy, you cannot directly change the item in the original list. To test this, try running the following:
+
+$servers = @('SRV1', 'SRV2', 'SRV3', 'SRV4', 'SRV5')
+foreach ($server in $servers)
+{
+        $server = new $server
+}
+$servers
+
+        You should get something like this: 
+
+SRV1
+SRV2
+SRV3
+SRV4
+SRV5
+
+        Nothing changed!
+        This is because you're modifying only a copy fo the original variable in the array. 
+        This is one of the downsides of using a foreach loop (of any kind). 
+        To directly modify the original contents of the list you're looping through, you have to use one of the other loop types. 
 
