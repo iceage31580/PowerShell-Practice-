@@ -345,5 +345,39 @@ $server =  the temporary variable holding the current item
 in = basically means inside
 $servers = the full list you're going through
 
+        Nothing changed! This is because you're modifying only a copy of the original variable in the array. 
+        This is one of the downsidesof using a foreach loop (of any kind). 
+        To directly modify the orginal contents of the list you're looping through, you have to use one of the other loop types. 
 
+The ForEach-Object cmdlet
+
+        Like the foreach statement, the ForEach-Object cmdlet can iterate over a set of objects and perform an action. 
+        But because ForEach-Object is a cmdlet, you have to pass that set of objects and the action to complete as parameters. 
+
+$servers = @('SRV1', 'SRV2', 'SRV3', 'SRV4', 'SRV5')
+ForEach-Object -InputObject $servers -Process {
+        Get-Content -Path "\\$_\c$\App_configuration.txt"
+        }
+
+Listing 4-10 Using the ForEach-Object cmdlet
+
+        A bit is different here, so let's walk through it. Notice that the ForEach-Object cmdlet takes an InputObject parameter. 
+        In this case, you're using the $servers array, but you could use any object, such as a string or integer, 
+        In those cases, Powershell will simply perform a single iteration.
+        The cmdlet also accepts a Process parameter, which should be a scriptblock containing the code you'd like to run for each element inside the input object.
+                (A scriptblock is a colleciton of statements that you pass into a cmdlet as a single unit.)
+
+        You may have noticed something else strange about Listing 4-10. Instead of using a $server variable, as you did with the foreach statement, you use the syntax $_. 
+        This special syntax represents the current object in the pipeline. 
+        The special syntax represents the current object in the pipeline. 
+        The major difference between the foreach statement and teh ForEach-Object cmdlet is that the cmdlet accepts pipeline input. 
+        In practice, ForEach-Object is almost always used by passing in the InputObject parameter through the pipeline so: 
+
+$servers | ForEach-Object - Process {
+        Get-Content -Path "\\$_\c$\App_configuration.txt"
+                }
+
+        The forEach-Object cmdlet can be a major time-saver. 
+
+The foreach() Method (page 56)
 
