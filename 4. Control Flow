@@ -381,3 +381,44 @@ $servers | ForEach-Object - Process {
 
 The foreach() Method (page 56)
 
+        The final type of foreach loop you'll look is the foreach() object method, introduced in PowerShell V4. 
+        The foreach() method exists on all arrays in PowerShell, and can be used to accomplish the same thing as foreach and ForEach-Object. 
+        The foreach() method accepts a scriptblock parameter that should contian the code to execute each iteration. 
+        As with ForEach-Object, you use $_ to capture the current iteration's object. 
+
+$servers.foreach({Get-Content -Path "\\$_\c$\App_configuration.txt"})
+
+        The foreach() method is considerably faster than the other two, and noticeably so when processing larger datasets. 
+        This method is reccomended over the other two when possible. 
+        A foreach loop is great when you want to perform a task on an object-by-object basis. 
+        What if you wanted to do something simpler such as executing a task a number of times. 
+
+The for loop 
+
+        To execute code a predetermined number of times, you use a for loop.
+
+for ( $i = 0; $i -lt 10; $i++)
+{
+        $i
+}
+
+A for loop consists of four piece. 
+
+        1. $i = 0; 
+                This is the iteration variable declaration.
+        2. $i -lt 10; 
+                This is the condition to continue running the loop
+        3. $i++
+                The action to perform on the iteration variable after each successful loop.
+        4. $i
+                This is the code you want to execute. 
+
+        In this example, you start the loop by initializing the variable $i = 0. 
+        Then you check to see whether $i is less than 10; if it is, you execute the code in the curly brackets, which prints $ix. 
+        After the code executes, you increment $i by ($i++) and then check whether it is still smaller than 10 ($i -lt 10). 
+        You repeat this process until $i is no longer less than 10, resulting in 10 iterations. (Page 57).
+
+        A for loop 
+
+        
+
