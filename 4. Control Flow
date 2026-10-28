@@ -418,7 +418,44 @@ A for loop consists of four piece.
         After the code executes, you increment $i by ($i++) and then check whether it is still smaller than 10 ($i -lt 10). 
         You repeat this process until $i is no longer less than 10, resulting in 10 iterations. (Page 57).
 
-        A for loop 
+        A for loop can be used like this to execute a task any number of times- simply replace the condition (in this case #2) to fit your needs. 
+        But the for loop has many more uses. 
+        One of the most powerful is manipulating the elements in an array.
+        Let's try a loop that can change as needed:
 
+$servers = @('SERVER1', 'SERVER2', 'SERVER3', 'SERVER4', 'SERVER5')
+for($i = 0; $i -lt $servers.Length; $i++)
+{
+        $servers[$i] = "new $server"
+}
+$servers
+
+        When you run the script, the server names should change. 
+        A for loop is also particularly useful when performing an action that requires multiple elements in an array. 
+        For instance, let's say that your $servers array is arranged in a particular order, and you want to know which server comes after which. 
+        To do this, you could use a loop for:
+
+for($i = 1; $i -lt $servers.Length; i++)
+{
+        Write-Host $servers[$i] "comes after" $servers[$i - 1]
+}
+
+        Notice that this time you declare the iteration variable to start at 1. 
+        This ensures that you don't try to access the server that comes before the first one, which would give you an error. 
+
+        As you'll see, the for loop is a powerful tool that has many uses outside the simple example above. 
+
+The while loop 
+
+        The while loop is the simplest loop: while a condition is true, do something. 
+        To get a sense of the  while loop syntax, let's rewrite the for loop.
+
+$counter = 0
+while ($counter -lt 10){
+        $counter
+        $counter++
+}
+
+(page 58). 
         
 
