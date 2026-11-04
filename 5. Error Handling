@@ -1,0 +1,10 @@
+  The best thing to do is write code that breaks responsibly. 
+
+  This is the basic premise behind error handling, the techniques that developers use to ensure their code expects and takes care of - or handles errors. 
+  This chapter will look into the errors themselves, looking at the difference between terminating and nonterminating errors. 
+  It will cover the try/catch/finally construct, and lastly Powershell's automatic error variables. 
+
+Working with Errors and Exceptions 
+
+  When your code encounters a problem, it disrupts the normal flow; we call this flow-disrupting event an exception. 
+  Mistakes such as dividing by zero, trying to access an element outside the bounds of an array or trying to open a missing file will all cause PowerShell to throw an exception. (Page 62)
