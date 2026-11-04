@@ -457,5 +457,49 @@ while ($counter -lt 10){
 }
 
 (page 58). 
-        
 
+        As you can see, to use a while loop, just place the condition you want to evaluate inside the parentheses, and the code you want to run inside the curly brackets. 
+        The while loop is best used when the number of iterations for the loop is not predetermined. 
+        Say you have a Windows server (again called $problemServer) that's frequently going down. 
+        But there's a file you need on it, and you don't want to sit there testing the server every few minutes to get int. 
+        You can use a while loop to automat this process for you. 
+
+while(Test-Connection -ComputerName $problemServer -Quiet -Count 1)
+        {
+                Get-Content -Path "\\$problemServer\c$\App_configation.txt"
+                break
+        }
+
+        By using a while loop instead of an if, you can repeatedly check to see whether the service is up. 
+        Then, once you get the content you need, you can break out the loop to make sure you don't continue to check the server. 
+        The break keyword can be used in any loop to stop the loop from running. 
+        This is especially important when using one of the most common while loops: the while($true) loop. 
+        By using the $true as your condition, your while loop will run forever unless you stop it with a break or keyboard input. 
+
+The do/while and do/until Loops
+
+        Similar to the while loop are the do/while and do/until loops. The two are essentially inverses: the do/while loop does something while a condition is true,         
+        and the do/until loop does something until a condition is true. 
+
+do {
+
+} while($true)
+
+        As you can see, the do code comes before the while condition. 
+        The major difference between a while loop and a do/while loop is that a do/while loop will execute the code before the condition is evaluated. 
+        This can be usefule in certain situations, particularly when you are continually receiving input from a source and want to evaluate it. 
+        For example, say you want to promp the user to ask them for the best programming language 
+
+do {
+        $choice = Read-Host -Prompt 'What is the best programming language?'
+    } until ($choice -eq 'PowerShell')
+Write-Host -Object 'Correct!'
+
+        The do/while and do/until loops are very similar. 
+        Often this means you can accomplish the same thing using each loop simply by inverting the condition. 
+
+A lot has been covered in this chapter. 
+It covered control flow, and hot to use conditional logicto introduce alternative paths through your code. 
+
+Some of the various types of control statements covered are the if statement, switch statement, foreach, for, and while loops. 
+You viewed a script to check if Servers are up. 
