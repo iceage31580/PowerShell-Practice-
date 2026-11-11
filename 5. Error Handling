@@ -8,3 +8,48 @@ Working with Errors and Exceptions
 
   When your code encounters a problem, it disrupts the normal flow; we call this flow-disrupting event an exception. 
   Mistakes such as dividing by zero, trying to access an element outside the bounds of an array or trying to open a missing file will all cause PowerShell to throw an exception. (Page 62)
+
+  Once an exception is thrown, if you do nothing to stop it, it will be wrapped with additinoal information and sent to the user as an error. 
+  Powershell has two types of error. 
+  The first is a terminating error: any error that stops execution of the code. 
+  For example, say you have a script called Get-Files.ps1 that finds a list of files in a certain folder and then peforms the same action for each of those files. 
+  If the script can't find the folder-someone has moved it or named it something unexpected- you'll want to return a terminating error, as the code cannot do anything without acess to all the files. 
+  But what happens if only one of the files is corrupted?
+
+  When you try to access the corrupted file, you'll get another execption. 
+  But, because you're performing the same independent action on each file, there's no reason that one broken file should stop the rest from running. 
+  In that case, you'll write code that treats the exception caused by the single borken file as a nonterminating error, one not severe enough to halt the rest of the code. 
+
+  The general error-handling behavior for nonterminating errors is to output a useful error message and proceed with the rest of the program. 
+  You can see this in several of PowerShell's built-in commands. For example, say you want to check the status of the Windows services bits, foo, and lanmanserver. 
+  You could use a single Get-Service command to theck them all at the same time. 
+
+PS> Get-Service bits, foo, lanmanserver
+Get-Service: Cannot find any service with service name 'foo'. 
+
+At line :1 char 1
++ Get-Service bits, foo, lanmanserver
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo  : ObjectNotFound: (foo:String) [Get-Service], ServiceCommandException 
++ FullyQualifiedErrorId: NoServiceFoundForGivenName, 
+                         Microsoft.PowerShell.Commands.GetServiceCommand
+
+Status    Name         DisplayName
+-----     -----        -----------
+Running   bits         Background Intelligent Transfer
+Running   lanmanserver Server
+
+Of course, there is no foo service, and PowerShell tells you as much. 
+But notice that PowerShell gets the status for the other services; it doesn't stop executing when it runs into that error. 
+This nonterminating error can be converted to a terminating error to prevent execution of the rest of the code. 
+
+
+  It's important to understand that the decision to turn an exeception into a nonterminating error or a terminating error is made by a developer. 
+  Often, this decision will be made for you by whoever wrote the cmdlet you're using. 
+  In many cases, if the cmdlet encounters an exception, it will return a non-terminating error, writing error output to the console and allowing your script to continue executing. 
+
+
+Handling Nonterminating Errors (Page 63)
+
+  
+
