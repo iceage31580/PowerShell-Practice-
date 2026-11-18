@@ -39,9 +39,15 @@ Status    Name         DisplayName
 Running   bits         Background Intelligent Transfer
 Running   lanmanserver Server
 
-Of course, there is no foo service, and PowerShell tells you as much. 
-But notice that PowerShell gets the status for the other services; it doesn't stop executing when it runs into that error. 
-This nonterminating error can be converted to a terminating error to prevent execution of the rest of the code. 
+  Of course, there is no foo service, and PowerShell tells you as much. 
+  But notice that PowerShell gets the status for the other services; it doesn't stop executing when it runs into that error. 
+  This nonterminating error can be converted to a terminating error to prevent execution of the rest of the code. 
+
+  Once an exception is thrown, if you do nothing to stop it, it will be wrapped with additional information and sent to the user as an error. 
+  PowerShell has two types of errors. 
+  The first is a terminating error: any error that stops execution of code. 
+  For example, say you have a script called Get-Files.ps1 that finds a list of files in a certain folder and then performs the same action for each of those files. 
+  If the script can't find the folder- someone has moved it or named it something unexpceted- you'll want to return a terminating error, as the code cannot do anything without access to all the files. 
 
 
   It's important to understand that the decision to turn an exeception into a nonterminating error or a terminating error is made by a developer. 
@@ -50,6 +56,41 @@ This nonterminating error can be converted to a terminating error to prevent exe
 
 
 Handling Nonterminating Errors (Page 63)
+
+  Let's say you want to write a simple script that will go into a folder that you know contains several text files and prints out the first line of every text file.
+  If the folder doesn't exist, you want the script to end immediately and report the error; otherwise, if you encounter any other errors, you want the script to keep running and report the error. 
+  You'll start by writing a script that should return a terminating error. 
+
+$folderPath = '.\bogusFolder'
+$files = Get-ChildItem -Path $folderPath 
+Write-Host "This shouldn't run."
+$files.foreach({
+  $fileText = get-Content $files
+  $fileText[0]
+})
+
+  Here, you use Get-ChildItem to return all the files contained inside the path you pass it- in this case, a bogus folder. 
+  If you run this script, you shoudl get output like the following: 
+
+Get-ChildItem : Cannot find path `C:\bogusFolder` because it does not exist. 
+At C:\Get-Files.ps1:2 char:10
++$files = Get-ChildItem -Path $folderPath
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo : ObjectNotFound : (C:\bogusFolder:String) [Get-ChildItem], ItemNotFoundException
+  + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+This shouldn't run. 
+
+  As you cana see, two things happen: PowerShell returns an error, which specifies the type of exception encountered (ItemNotFoundException), and the call to Write-Host runs. 
+  This means that the error you get is nonterminating. 
+
+  Write-Host is the cmdlet used to write to the console. 
+
+  To turn this error into a terminating error, you'll use the ErrorAction parameter. 
+  This is a common parameter, meaning that it's built into every PowerShell cmdlet. 
+  The ErrorAction parameter determines what action to take if the cmdlet in question encounters a nonterminating error. 
+
+
+
 
   
 
