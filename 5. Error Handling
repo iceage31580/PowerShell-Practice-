@@ -89,6 +89,43 @@ This shouldn't run.
   This is a common parameter, meaning that it's built into every PowerShell cmdlet. 
   The ErrorAction parameter determines what action to take if the cmdlet in question encounters a nonterminating error. 
 
+  This parameter has five main options. 
+
+Continue. Outputs the error message and continues to execute teh cmdlet. This is the default value. 
+
+Ignore: Continues to execute the cmdlet without outputting an error or recording it in the $Error variable. 
+
+Inquire: Outputs the error message and prompts the user for input before continuing
+
+SilentlyContinue: Continues to execute the cmdlet without outputting an error, but records it in the $Error variable 
+
+Stop: Outputs the error message and stops the cmdlet from executing. 
+
+  You'll look more at the $Error variable later. For now, you want to pass Stop to Get-ChildItem. 
+
+$folderPath = "./bogusFolder"
+
+$files = Get-ChildItem -Path -ErrorAction Stop
+
+WriteHost "This shouldn't run"
+
+$files.foreach({
+  $fileText = Get-Content $files
+  $fileText[0]
+})
+
+  The ErrorAction parameter is useful for controlling error behavior on a case-by-case basis. 
+  To change how PowerShell handles all nonterminating errors, you can use the $ErrorActionPreference variable, an automatic variable that controls the default nonterminating error behavior. 
+  By default, $ErrorActionPreference is set to Continue.
+  Note that ErrorAction parameter overrides the value of $ErrorActionPreference. 
+
+  In general, best practice might be to always set $ErrorActionPreference to Stop to remove the concept of nonterminating errors altogether. 
+  This allows all tpyes of execptions to be caught, and sparing yourself the work of knowing in advance which errors are terminating and which are non-terminating. 
+  You can accomplish the same task by using ErrorAction paramter on each command to get more granularwith defining which commands return terminating errors. 
+  It's not practical to remember every ErrorAction parameter to every command that is called. 
+  Now let's look at how to hadnle terminating errors by using the try/catch/finally construct. 
+
+Handling Terminating Errors (Page 64)
 
 
 
