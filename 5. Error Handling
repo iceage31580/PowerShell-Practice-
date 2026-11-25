@@ -127,6 +127,82 @@ $files.foreach({
 
 Handling Terminating Errors (Page 64)
 
+  To prevent terminating errors from stopping a program, you need to tach them. 
+  You do so with the try/catch/finally construct. 
+
+try {
+  # initial code
+  }
+catch {
+  # code that runs if terminating error found
+}
+finally {
+  # code that runs on the end
+}
+
+  Using try/catch/finally esssentially sets up error-handling saftey net. 
+  The try block contains the original code you want to run; if a terminating error happens PowerShell wil redirect flow to the code in the catch block. 
+  Regardless of whether the code in catch runs, the code in fainlly will always run- note that the finally block is optional, unlike try or catch. 
+
+$folderPath = ".\bogusFolder"
+try {
+  $files = Get-ChildItem -Path $folderPath -ErrorAction Stop
+  $files.foreach({
+    $fileText = Get-Content $files
+    $fileText[0]
+  })
+} catch {
+  $_.Exception.Message
+  }
+
+  When a terminating error is caught in the catch block, the error object is stored in the $_variable.
+  In this example, you just use $_.Exception.Message to return the exception message. 
+  In this case, the code shoudl return something like Cannot find path 'C:\bogusFolder' because it doesn't exist. 
+  Error objects also contain other information, including the type of exception that was thrown, a stack trace that shows the execution history of the code that occurred beofre the exception was thrown, and more. 
+  However, for now the most useful piece of information to be used is the Message property, as this typically contains the basic information you need in order to see what happened in your code. 
+
+
+  By now, your code should work as you expect. 
+  By passing Stop into ErrorAction, you ensure that a missing folder will return a terminating error and catch the error. 
+  But what will happen when you try to use Get-Content to access the file? 
+
+$filePath = '.\bogusFile.txt'
+try {
+  Get-Content $filePath
+  } catch {
+    Write-Host "We found an error"
+          }
+
+  It should produce an error message from PowerShell, not the custom one written in the catch block. 
+  This is because Get-Content returns a non-terminating error when item is not found- and try/catch can find only terminating errors. 
+
+  This means that this code: 
+
+$folderPath = ".\bogusFolder"
+try {
+  $files = Get-ChildItem -Path $folderPath -ErrorAction Stop
+  $files.foreach({
+    $fileText = Get-Content $files
+    $fileText[0]
+  })
+} catch {
+  $_.Exception.Message
+  }
+
+  will work as intended- any errors accessing the files themselves will not halt execution of the program, and will simply return to the console. 
+
+  Notice that there a finally block isn't in the code. 
+  The finally block is a great place to put code that performs necessary cleanup tasks such as disconnecting open database connections, cleaning up PowerShell remoting sessions, and so on. 
+
+
+Exploring the $Error Automatic Variable
+
+  Throughout this chapter, you've forced PowerShell to return a lot of errors. 
+  Terminating or nonterminating, each one has been stored in a PowerShell automatic variable called $Error. 
+  The $Error variable is a built-in variable that stores an array of all the errors returned in the current PowerShell session in the order they appear.
+
+  To demonstrate the $Error variable, let's go to the console and run a command that you know will return a non-terminating error. (Page 66) 
+
 
 
   
